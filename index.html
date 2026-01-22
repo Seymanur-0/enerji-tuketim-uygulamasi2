@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akıllı Enerji Asistanı - TÜBİTAK Projesi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation"></div> <!-- Canlı arka plan efekti için -->
+
+    <header class="project-header">
+        <div class="header-content">
+            <div class="project-title-area">
+                <i class="fas fa-lightbulb header-icon"></i>
+                <h1>Akıllı Enerji Asistanı</h1>
+            </div>
+            <p class="project-slogan">Enerjini Bil, Bütçeni Koru, Geleceği Şekillendir!</p>
+            <p class="student-info">9/E Sınıfı Öğrencileri: <strong>Şeymanur SEVİNÇTEKİN</strong> ve <strong>Elif Meryem KARA</strong></p>
+            <p class="project-description">Bu TÜBİTAK projesi, evdeki elektrik tüketimini kolayca tahmin etmenizi, güncel tarifelerle maliyetleri görmenizi ve akıllı tasarruf senaryolarıyla enerji verimliliğini en üst düzeye çıkarmanızı sağlar. Enerji dostu bir gelecek için ilk adımı atın!</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card-group">
+            <!-- Elektrik Fiyat Bilgisi Kartı -->
+            <div class="card fade-in" style="animation-delay: 0.2s;">
+                <div class="card-icon-circle"><i class="fas fa-money-bill-wave"></i></div>
+                <h2>1. Güncel Elektrik Tarifesi</h2>
+                <div class="price-info">
+                    <p>Türkiye'deki kademeli tarife bilgileri (vergiler dahil):</p>
+                    <ul>
+                        <li><i class="fas fa-arrow-circle-down"></i> İlk 240 kWh: <span id="kwhPrice1st">2.25</span> TL/kWh</li>
+                        <li><i class="fas fa-arrow-circle-up"></i> 240 kWh üzeri: <span id="kwhPrice2nd">3.40</span> TL/kWh</li>
+                    </ul>
+                    <p class="hint"><i class="fas fa-exclamation-triangle"></i> Fiyatlar değişkenlik gösterebilir, son faturanızdan kontrol ediniz.</p>
+                </div>
+            </div>
+
+            <!-- Alet Kullanımı ve Gücü Kartı -->
+            <div class="card fade-in" style="animation-delay: 0.4s;">
+                <div class="card-icon-circle"><i class="fas fa-plug"></i></div>
+                <h2>2. Evdeki Aletleriniz</h2>
+                <div id="deviceInputs">
+                    <!-- Aletler buraya JavaScript ile eklenecek -->
+                </div>
+                <p class="hint"><i class="fas fa-info-circle"></i> Her cihazın günlük kullanım süresini (saat) ve gücünü (Watt) giriniz.</p>
+            </div>
+        </div>
+
+        <div class="card-group">
+            <!-- Tahmini Tüketim ve Maliyet Kartı -->
+            <div class="card result-card fade-in" style="animation-delay: 0.6s;">
+                <div class="card-icon-circle"><i class="fas fa-chart-line"></i></div>
+                <h2>3. Tahmini Tüketim ve Maliyet</h2>
+                <div id="summary">
+                    <p><span><i class="far fa-calendar-alt"></i> Günlük Tüketim:</span> <span class="animated-number" data-target="0" id="currentKwh">0.00 kWh</span></p>
+                    <p><span><i class="fas fa-lira-sign"></i> Günlük Maliyet:</span> <span class="animated-number" data-target="0" id="currentCost">0.00 TL</span></p>
+                    <p><span><i class="far fa-calendar-check"></i> Aylık Tüketim:</span> <span class="animated-number" data-target="0" id="monthlyKwh">0.00 kWh</span></p>
+                    <p><span><i class="fas fa-hand-holding-usd"></i> Aylık Maliyet:</span> <span class="animated-number" data-target="0" id="monthlyCost">0.00 TL</span></p>
+                </div>
+            </div>
+
+            <!-- Tasarruf Senaryoları Kartı -->
+            <div class="card scenario-card fade-in" style="animation-delay: 0.8s;">
+                <div class="card-icon-circle"><i class="fas fa-leaf"></i></div>
+                <h2>4. Tasarruf Senaryoları <span class="badge">OYNA!</span></h2>
+                <div id="scenarioCheckboxes">
+                    <!-- Senaryolar buraya JavaScript ile eklenecek -->
+                </div>
+                <p id="savingsSummary" class="highlight-text animate-pulse">
+                    <i class="fas fa-piggy-bank"></i> Toplam Tasarruf: <span class="animated-number" data-target="0" id="savingsKwh">0.00 kWh</span> ve <span class="animated-number" data-target="0" id="savingsCost">0.00 TL</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="math-info-card card fade-in" style="animation-delay: 1.0s;">
+            <div class="card-icon-circle"><i class="fas fa-calculator"></i></div>
+            <h2>Matematiğin Enerjiye Dokunuşu</h2>
+            <p>Bu uygulamanın kalbinde basit ama güçlü matematiksel prensipler yatar:</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> <b>Enerji = Güç x Süre:</b> Bir cihazın harcadığı toplam enerji (kWh), gücünün (Watt) kullanım süresiyle (saat) çarpılması ve 1000'e bölünmesiyle bulunur.</li>
+                <li><i class="fas fa-check-circle"></i> <b>Kademeli Maliyet Hesaplaması:</b> Türkiye'deki elektrik faturaları kademeli bir sisteme göre hesaplanır. Uygulama, aylık tüketiminize göre farklı birim fiyatlarını (ilk 240 kWh ve sonrası) uygulayarak toplam maliyetinizi gerçekçi bir şekilde tahmin eder.</li>
+                <li><i class="fas fa-check-circle"></i> <b>Optimizasyon ve Bilinçlenme:</b> Hangi tasarruf önleminin bütçeniz üzerindeki etkisini anlık olarak görerek, kendi enerji tüketim alışkanlıklarınızı en verimli hale getirme yollarını keşfedersiniz. Matematik, bu sayede hem çevreye duyarlı olmanıza hem de cüzdanınızı korumanıza yardımcı olur!</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
